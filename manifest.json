@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Traversy Media scroll active lesson",
+  "version": "1.0",
+  "description": "Scrolls the currently active lesson into view and highlights it in the side menu in Brad Traversy's course platform. Only useful to students of Travers Media.",
+  "icons": {
+    "48": "logo-48.jpg"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.traversymedia.com/products/*"],
+      "js": ["index.js"]
+    }
+  ]
+}
