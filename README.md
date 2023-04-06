@@ -1,4 +1,3 @@
-# FireFox add on for students of Brad Traversy
 
 This add on once enabled scrolls the current active lesson link into view on the
 side menu of Brad's course platform.
