@@ -11,4 +11,4 @@ Extension for Chrome is in the chrome branch.
 
 [Get the extension for FireFox](https://addons.mozilla.org/en-US/firefox/addon/traversy-scroll-active-lesson/)
 
-[Get the extension for Chrome/Chromium](https://chrome.google.com/webstore/detail/nmddkphngjlkifpobgpcbfbmfmfpimam)
+[Get the extension for Chrome/Chromium](https://chrome.google.com/webstore/detail/traversy-media-scroll-act/nmddkphngjlkifpobgpcbfbmfmfpimam?hl=en&authuser=0)
