@@ -24,4 +24,5 @@ function maximiseVideo() {
 
 maximiseVideo()
 
-highlightAndScrollIntoViewActive()
+// NOTE: Ensure scroll animation runs after video resized
+window.requestAnimationFrame(highlightAndScrollIntoViewActive)
