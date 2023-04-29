@@ -9,7 +9,6 @@ function highlightAndScrollIntoViewActive() {
 }
 
 function maximiseVideo() {
-  console.log('test')
   const searchForm = document.querySelectorAll('form[role=search]')[1]
   const videoWrapper = document.querySelector('.kjb-video-responsive')
   videoWrapper.style.maxWidth = '100%'
@@ -23,6 +22,6 @@ function maximiseVideo() {
   searchForm.scrollIntoView(true)
 }
 
-highlightAndScrollIntoViewActive()
-
 maximiseVideo()
+
+highlightAndScrollIntoViewActive()
