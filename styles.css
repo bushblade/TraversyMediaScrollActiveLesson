@@ -1,3 +1,7 @@
+.main-content {
+  scroll-snap-type: y proximity;
+}
+
 .responsive-toggle {
   display: block !important;
   scroll-snap-align: start;
@@ -9,10 +13,6 @@
 
 body.open {
   transform: translateX(330px);
-}
-
-.main-content {
-  scroll-snap-type: y mandatory;
 }
 
 .input-group.search.post-page {
