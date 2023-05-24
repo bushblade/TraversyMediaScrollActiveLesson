@@ -26,3 +26,7 @@ maximiseVideo()
 
 // NOTE: Ensure scroll animation runs after video resized
 window.requestAnimationFrame(highlightAndScrollIntoViewActive)
+
+document.querySelector('.responsive-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('open')
+})
