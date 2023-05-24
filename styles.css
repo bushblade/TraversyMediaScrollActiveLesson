@@ -1,5 +1,6 @@
 .responsive-toggle {
   display: block !important;
+  scroll-snap-align: start;
 }
 
 .main-sidebar {
@@ -8,4 +9,12 @@
 
 body.open {
   transform: translateX(330px);
+}
+
+.main-content {
+  scroll-snap-type: y mandatory;
+}
+
+.input-group.search.post-page {
+  scroll-snap-align: start;
 }
