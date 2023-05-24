@@ -1,0 +1,42 @@
+.main-sidebar .product-outline-post.active {
+  outline: 6px solid #0060df;
+  padding: 12px;
+}
+
+.main-sidebar {
+  xmargin-left: -330px;
+}
+
+.search.post-page {
+  display: none;
+}
+
+.responsive-toggle {
+  display: block !important;
+}
+
+@media (max-width: 991px) {
+  .main-sidebar {
+    margin-left: unset;
+  }
+}
+
+@media screen and (max-width: 1399px) {
+  .main-sidebar {
+    margin-left: -330px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .responsive-toggle {
+    display: block;
+  }
+
+  .search.post-page {
+    display: block;
+  }
+
+  .main-sidebar {
+    margin-left: 0px;
+  }
+}

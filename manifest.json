@@ -2,15 +2,16 @@
   "manifest_version": 3,
   "name": "Traversy Media scroll active lesson",
   "version": "1.1",
-  "description": "Scrolls the currently active lesson into view and highlights it in the side menu in Brad Traversy's course platform. Also maximises the video player to fit the available space in the viewport. Only useful to students of Travers Media.",
+  "description": "Scrolls the active lesson into view and highlights it in a Traversy Media course. Maximises the video player",
+  "permissions": ["scripting", "activeTab", "tabs"],
   "icons": {
     "48": "logo-48.jpg"
   },
-
   "content_scripts": [
     {
       "matches": ["*://*.traversymedia.com/products/*"],
-      "js": ["index.js"]
+      "js": ["index.js"],
+      "css": ["styles.css"]
     }
   ],
   "action": {
