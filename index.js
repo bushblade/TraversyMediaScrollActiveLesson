@@ -1,8 +1,10 @@
+/** @type {HTMLDivElement} */
 const videoWrapper = document.querySelector('.kjb-video-responsive')
 
 function highlightAndScrollIntoViewActive() {
   const sideMenu = document.querySelector('.main-sidebar')
 
+  /** @type HTMLLinkElement */
   const activeLink = sideMenu.querySelector('.product-outline-post.active')
   activeLink.style.outline = '3px solid #0060df'
   activeLink.style.padding = '6px'
@@ -30,12 +32,14 @@ window.requestAnimationFrame(highlightAndScrollIntoViewActive)
 
 // set speed ------------------------------------------------------------
 
+/** @param {number} indx */
 function speedSettingClickEvent(indx) {
   return function () {
     localStorage.setItem('playback-speed', `${indx}`)
   }
 }
 
+/** @param {NodeListOf<HTMLInputElement>} speedSettingCheckBoxes*/
 function addSpeedSettingsEventListeners(speedSettingCheckBoxes) {
   // add event listeners
   speedSettingCheckBoxes.forEach((checkBox, indx) => {
@@ -43,6 +47,7 @@ function addSpeedSettingsEventListeners(speedSettingCheckBoxes) {
   })
 }
 
+/** @param {NodeListOf<HTMLInputElement>} speedSettingCheckBoxes*/
 function restoreSpeed(speedSettingCheckBoxes) {
   const storedSpeed = localStorage.getItem('playback-speed')
   if (storedSpeed) {
@@ -52,11 +57,14 @@ function restoreSpeed(speedSettingCheckBoxes) {
 
 // NOTE: video settings are dynamically inserted into DOM after wista loads the
 // video.
+
+/** @param {Array<MutationRecord>} mutationList*/
 function mutationCallback(mutationList) {
   // only set the speed once
   let canSetSpeed = true
 
   mutationList.forEach(() => {
+    /** @type {NodeListOf<HTMLInputElement>} */
     const speedSettingCheckBoxes =
       document.querySelectorAll('input[name=Speed]')
 

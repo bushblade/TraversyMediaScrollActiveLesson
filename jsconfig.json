@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "classic",
+    "target": "es2020",
+    "module": "es2015"
+  },
+  "exclude": [],
+  "typeAcquisition": {
+    "enable": true
+  }
+}
