@@ -5,8 +5,15 @@ side menu of the course platform for [Traversy Media](https://www.traversymedia.
 It highlights it and places it in the center of the screen so you can easily
 keep track of what lesson you are on, which is next and which is previous.
 
-Additionally the extension now maximises the video to fit the available space in
+## Additional features
+
+The extension now maximises the video to fit the available space in
 the viewport i.e. no black borders around the video on large monitors.
+
+The video speed setting will now persist between switching lessons and/or
+refreshing the browser.
+
+---
 
 The extension may work for other courses using the [Kajabi](https://kajabi.com/)
 platform but I have not tested.
