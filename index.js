@@ -58,12 +58,25 @@ function restoreSpeed(speedSettingCheckBoxes) {
 // NOTE: video settings are dynamically inserted into DOM after wista loads the
 // video.
 
+// only set the speed once
+let canSetSpeed = true
+let settingsOpened = false
+
 /** @param {Array<MutationRecord>} mutationList*/
 function mutationCallback(mutationList) {
-  // only set the speed once
-  let canSetSpeed = true
-
   mutationList.forEach(() => {
+    // need to open and close the settings to apply
+    /** @type {HTMLButtonElement} */
+    const settingsButton = document.querySelector(
+      'button[aria-label="Show settings menu"]'
+    )
+
+    if (settingsButton && !settingsOpened) {
+      // open settings
+      settingsButton.click()
+      settingsOpened = true
+    }
+
     /** @type {NodeListOf<HTMLInputElement>} */
     const speedSettingCheckBoxes =
       document.querySelectorAll('input[name=Speed]')
@@ -74,9 +87,11 @@ function mutationCallback(mutationList) {
       canSetSpeed &&
       speedSettingCheckBoxes.length === 7
     ) {
-      canSetSpeed = false
       addSpeedSettingsEventListeners(speedSettingCheckBoxes)
       restoreSpeed(speedSettingCheckBoxes)
+      canSetSpeed = false
+      // close settings
+      if (settingsOpened) settingsButton.click()
     }
   })
 }
