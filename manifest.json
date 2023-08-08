@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.traversymedia.com/products/*"],
-      "js": ["index.js"]
+      "js": ["index.js", "setSpeed.js"]
     }
   ]
 }
