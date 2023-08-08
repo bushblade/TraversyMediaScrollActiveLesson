@@ -1,5 +1,5 @@
 /** @param {number} indx */
-function speedSettingClickEvent(indx) {
+function handleSpeedSettingClick(indx) {
   return function () {
     localStorage.setItem('playback-speed', `${indx}`)
   }
@@ -15,7 +15,7 @@ function getSpeedSettingCheckBoxes() {
 function addSpeedSettingsEventListeners(speedSettingCheckBoxes) {
   // add event listeners
   speedSettingCheckBoxes.forEach((checkBox, indx) => {
-    checkBox.addEventListener('click', speedSettingClickEvent(indx))
+    checkBox.addEventListener('click', handleSpeedSettingClick(indx))
   })
 }
 
@@ -25,6 +25,8 @@ function restoreSpeed(speedSettingCheckBoxes) {
   if (storedSpeed) {
     speedSettingCheckBoxes[storedSpeed].click()
   }
+  // close settings if open
+  if (isSettingsOpen()) getSettingsButton().click()
 }
 
 function getSettingsButton() {
@@ -39,14 +41,18 @@ function isSettingsOpen() {
   return getSettingsButton().getAttribute('aria-expanded') === 'true'
 }
 
+function handlePlayback() {
+  restoreSpeed(getSpeedSettingCheckBoxes())
+}
+
 // NOTE: video settings are dynamically inserted into DOM after wista loads the
 // video.
 
-// only set the speed once
-let canSetSpeed = true
+// only add speed setting event listeners once
+let needToAddSpeedSettingListeners = true
 let settingsOpenedFirstTime = false
-// need to set again if first play to fix issue with Kajabi
-let firstPlay = true
+// only add one playback event listener
+let playbackListenerAdded = false
 
 /** @param {Array<MutationRecord>} mutationList*/
 function mutationCallback(mutationList) {
@@ -65,19 +71,19 @@ function mutationCallback(mutationList) {
     // check that the speed settings are there and we can set speed
     if (
       speedSettingCheckBoxes &&
-      canSetSpeed &&
+      needToAddSpeedSettingListeners &&
       speedSettingCheckBoxes.length === 7
     ) {
       addSpeedSettingsEventListeners(speedSettingCheckBoxes)
       restoreSpeed(speedSettingCheckBoxes)
-      canSetSpeed = false
-      // close settings
-      if (isSettingsOpen()) settingsButton.click()
+      needToAddSpeedSettingListeners = false
     }
 
+    // FIX: Kajabi resets playback speed to 1 on first play of video
     const video = document.querySelector('video')
-    if (video && settingsButton) {
-      watchForFirstPlay(video)
+    if (video && settingsButton && !playbackListenerAdded) {
+      video.addEventListener('playing', handlePlayback)
+      playbackListenerAdded = true
     }
   })
 }
@@ -90,22 +96,3 @@ const observerOptions = {
 const mutationObserver = new MutationObserver(mutationCallback)
 
 mutationObserver.observe(videoWrapper, observerOptions)
-
-// FIX: Kajabi resets playback speed to 1 on first play of video
-/**
- * @param {HTMLVideoElement} video
- */
-function watchForFirstPlay(video) {
-  const handlePlayback = () => {
-    if (firstPlay) {
-      restoreSpeed(getSpeedSettingCheckBoxes())
-      firstPlay = false
-      // close settings if open
-      if (isSettingsOpen()) {
-        getSettingsButton().click()
-      }
-    }
-  }
-
-  video.addEventListener('playing', handlePlayback)
-}
