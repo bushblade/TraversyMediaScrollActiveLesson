@@ -26,10 +26,24 @@ platform but I have not tested.
 
 ![Before Extension](./extension-after.webp)
 
-Extension for FireFox is in the main branch.
-
-Extension for Chrome is in the chrome branch.
-
 [Get the extension for FireFox](https://addons.mozilla.org/en-US/firefox/addon/traversy-scroll-active-lesson/)
 
 [Get the extension for Chrome/Chromium](https://chrome.google.com/webstore/detail/traversy-media-scroll-act/nmddkphngjlkifpobgpcbfbmfmfpimam)
+
+### Building the Extensions
+
+Build the extensions for both Firefox and Chrome using the [build script](build.sh):
+
+**Make the build script executable**: Run `chmod +x build.sh` to make the script executable.
+
+**Run the script**: Execute `./build.sh` to create the zip files for both Firefox and Chrome extensions.
+
+The script performs the following steps:
+
+- Copies `manifest.firefox.json` to `manifest.json` and zips the project to `firefox-extension.zip`.
+- Copies `manifest.chrome.json` to `manifest.json` and zips the project to `chrome-extension.zip`.
+- Deletes the temporary `manifest.json` file.
+
+### Contribute
+
+Feel free to fork the project and make contributions. Follow the development workflow outlined above, and submit a pull request when you have something new to add!
