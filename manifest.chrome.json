@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Traversy Media scroll active lesson",
-  "version": "1.2.2",
+  "name": "Traversy Media - Official Extension",
+  "version": "1.2.3",
   "description": "Improves the UX of the Traversy Media course platform",
   "icons": {
     "48": "logo-48.jpg"
