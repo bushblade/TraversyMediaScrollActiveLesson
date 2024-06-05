@@ -1,6 +1,6 @@
 /** @param {number} indx */
 function handleSpeedSettingClick(indx) {
-  return function () {
+  return () => {
     localStorage.setItem('playback-speed', `${indx}`)
   }
 }
@@ -25,20 +25,33 @@ function restoreSpeed(speedSettingCheckBoxes) {
   if (storedSpeed) {
     speedSettingCheckBoxes[storedSpeed].click()
   }
-  // close settings if open
-  if (isSettingsOpen()) getSettingsButton().click()
+  // close settings if open, use setTimeOut to ensure checking for open button
+  // runs after other processes
+  setTimeout(() => {
+    const settingsOpenButton = getSettingsCloseButton()
+
+    if (settingsOpenButton) {
+      settingsOpenButton.click()
+      settingsOpenButton.blur()
+    }
+  }, 100)
 }
 
-function getSettingsButton() {
+function getSettingsOpenButton() {
   /** @type {HTMLButtonElement} */
   const settingsButton = document.querySelector(
-    'button[aria-label="Show settings menu"]'
+    'button[aria-label="Show settings menu"]',
   )
   return settingsButton
 }
 
-function isSettingsOpen() {
-  return getSettingsButton().getAttribute('aria-expanded') === 'true'
+function getSettingsCloseButton() {
+  /** @type {HTMLButtonElement} */
+  const settingsButton = document.querySelector(
+    'button[aria-label="Hide settings menu"]',
+  )
+  return settingsButton
+  // return getSettingsButton().getAttribute('aria-label') === 'Hide settings menu'
 }
 
 function handlePlayback() {
@@ -56,9 +69,10 @@ let playbackListenerAdded = false
 
 /** @param {Array<MutationRecord>} mutationList*/
 function mutationCallback(mutationList) {
+  // biome-ignore lint/complexity/noForEach: <explanation>
   mutationList.forEach(() => {
     // need to open and close the settings to apply
-    const settingsButton = getSettingsButton()
+    const settingsButton = getSettingsOpenButton()
 
     if (settingsButton && !settingsOpenedFirstTime) {
       // open settings
@@ -95,4 +109,5 @@ const observerOptions = {
 
 const mutationObserver = new MutationObserver(mutationCallback)
 
+// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 mutationObserver.observe(videoWrapper, observerOptions)
