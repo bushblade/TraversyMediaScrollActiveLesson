@@ -9,7 +9,8 @@ function highlightAndScrollIntoViewActive() {
   activeLink.style.outline = '3px solid #0060df'
   activeLink.style.padding = '6px'
 
-  activeLink.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  // NOTE: smooth scrolling doesn't work well in Chromium based browsers
+  activeLink.scrollIntoView({ block: 'center' })
 }
 
 function maximiseVideo() {
