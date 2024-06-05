@@ -28,11 +28,11 @@ function restoreSpeed(speedSettingCheckBoxes) {
   // close settings if open, use setTimeOut to ensure checking for open button
   // runs after other processes
   setTimeout(() => {
-    const settingsOpenButton = getSettingsCloseButton()
+    const settingsCloseButton = getSettingsCloseButton()
 
-    if (settingsOpenButton) {
-      settingsOpenButton.click()
-      settingsOpenButton.blur()
+    if (settingsCloseButton) {
+      settingsCloseButton.click()
+      settingsCloseButton.blur()
     }
   }, 300)
 }
@@ -51,7 +51,6 @@ function getSettingsCloseButton() {
     'button[aria-label="Hide settings menu"]',
   )
   return settingsButton
-  // return getSettingsButton().getAttribute('aria-label') === 'Hide settings menu'
 }
 
 function handlePlayback() {
@@ -69,8 +68,7 @@ let playbackListenerAdded = false
 
 /** @param {Array<MutationRecord>} mutationList*/
 function mutationCallback(mutationList) {
-  // biome-ignore lint/complexity/noForEach: <explanation>
-  mutationList.forEach(() => {
+  for (const _ of mutationList) {
     // need to open and close the settings to apply
     const settingsButton = getSettingsOpenButton()
 
@@ -99,7 +97,7 @@ function mutationCallback(mutationList) {
       video.addEventListener('playing', handlePlayback)
       playbackListenerAdded = true
     }
-  })
+  }
 }
 
 const observerOptions = {
