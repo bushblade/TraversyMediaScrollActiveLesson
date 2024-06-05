@@ -34,7 +34,7 @@ function restoreSpeed(speedSettingCheckBoxes) {
       settingsOpenButton.click()
       settingsOpenButton.blur()
     }
-  }, 100)
+  }, 300)
 }
 
 function getSettingsOpenButton() {
