@@ -6,14 +6,25 @@
   "icons": {
     "48": "logo-48.jpg"
   },
-
   "content_scripts": [
     {
       "matches": ["*://*.traversymedia.com/products/*"],
-      "js": ["index.js", "setSpeed.js"]
+      "js": ["index.js", "videoSettings.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["wistia-injector.js"],
+      "matches": ["*://*.traversymedia.com/*"]
     }
   ],
   "action": {
     "default_icon": "logo-48.jpg"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "traversy-media@willadams.dev",
+      "strict_min_version": "109.0"
+    }
   }
 }
