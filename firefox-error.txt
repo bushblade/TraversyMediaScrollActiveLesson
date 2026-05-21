@@ -1,0 +1,8 @@
+Manifest key not supported by the specified minimum Firefox version
+
+Warning: "strict_min_version" requires Firefox 109, which was released before version 140 introduced support for "browser_specific_settings.gecko.data_collection_permissions".
+manifest.json
+Manifest key not supported by the specified minimum Firefox for Android version
+
+Warning: "strict_min_version" requires Firefox for Android 109, which was released before version 142 introduced support for "browser_specific_settings.gecko.data_collection_permissions".
+manifest.json
