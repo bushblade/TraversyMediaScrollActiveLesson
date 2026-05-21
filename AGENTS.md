@@ -33,7 +33,7 @@ From `biome.json` + `jsconfig.json`:
 - Smooth scrolling disabled (janky on Chromium) — uses `scrollIntoView({ block: 'center' })` without `behavior: 'smooth'`
 - Video speed persisted via `localStorage.tm-speed` in `wistia-injector.js`
 - Content script runs only on `/products/*` paths
-- Firefox gecko ID: `traversy-media@willadams.dev`, min FF 140
+- Firefox gecko ID: `{f2a96490-4e5a-4ab4-8652-3691a798b69a}`, min FF 142
 
 ## Branches
 
