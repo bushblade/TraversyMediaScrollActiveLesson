@@ -1,3 +1,12 @@
+> **This extension is no longer needed.**
+> All of the useful extension features are now built directly into the
+> TraversyMedia course platform across every active course.
+> If you have the Traversy Media Official Extension installed, please disable or
+> uninstall it and refresh the course page. Leaving it enabled may cause black
+> bars around course videos.
+>
+> *— Brad Traversy*
+
 # Browser extension add on for students of Brad Traversy
 
 This add on once enabled scrolls the current active lesson link into view on the
